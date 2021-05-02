@@ -11,6 +11,9 @@ class Node implements Comparator<Node> {
         weight = _weight;
     }
 
+    Node(){}
+
+
     int getV(){
         return v;
     }
@@ -31,7 +34,10 @@ class Node implements Comparator<Node> {
 
 }
 
-public class Graph3 {
+
+ class Graph3 {
+
+
 
     void shortestPathUsingDijkstra(int s , ArrayList<ArrayList<Node>> adj , int N){
 
@@ -41,7 +47,7 @@ public class Graph3 {
 
         PriorityQueue<Node> pq = new PriorityQueue<Node>(N , new Node());
         pq.add(new Node(s,0));
-        while(pq > 0){
+        while(pq.size() > 0){
             Node node = pq.poll();
             for(Node it : adj.get(node.getV())){
                 if(dist[node.getV()] + it.getWeight() < dist[it.getV()]){
@@ -62,29 +68,29 @@ public class Graph3 {
     public static  void main(String args[]) {
 
         int n = 5;
-        ArrayList<ArrayList<Node>> adj = new ArrayList<ArrayList<Node>>();
+        ArrayList<ArrayList<Node> > adj = new ArrayList<ArrayList<Node> >();
 
         for (int i = 0; i < n; i++) {
             adj.add(new ArrayList<Node>());
         }
 
-        adj.get(0).add(new node(1, 2));
-        adj.get(1).add(new node(0, 2));
+        adj.get(0).add(new Node(1, 2));
+        adj.get(1).add(new Node(0, 2));
 
-        adj.get(1).add(new node(2, 4));
-        adj.get(2).add(new node(1, 4));
+        adj.get(1).add(new Node(2, 4));
+        adj.get(2).add(new Node(1, 4));
 
-        adj.get(0).add(new node(3, 1));
-        adj.get(3).add(new node(0, 1));
+        adj.get(0).add(new Node(3, 1));
+        adj.get(3).add(new Node(0, 1));
 
-        adj.get(3).add(new node(2, 3));
-        adj.get(2).add(new node(3, 3));
+        adj.get(3).add(new Node(2, 3));
+        adj.get(2).add(new Node(3, 3));
 
-        adj.get(1).add(new node(4, 5));
-        adj.get(4).add(new node(1, 5));
+        adj.get(1).add(new Node(4, 5));
+        adj.get(4).add(new Node(1, 5));
 
-        adj.get(2).add(new node(4, 1));
-        adj.get(4).add(new node(2, 1));
+        adj.get(2).add(new Node(4, 1));
+        adj.get(4).add(new Node(2, 1));
 
         Graph3 obj = new Graph3();
         obj.shortestPathUsingDijkstra(0, adj, n);
